@@ -26,13 +26,34 @@ const xAxisGroup = graph
 
 const yAxisGroup = graph.append("g").attr("class", "y-axis");
 
+const line = d3
+    .line()
+    .x(function (d) {
+        return x(new Date(d.date));
+    })
+    .y(function (d) {
+        return y(d.distance);
+    });
+
+const path = graph.append("path");
+
 // update data
 const update = (data) => {
     data = data.filter((item) => item.activity === activity);
 
+    // sort data based on date object
+    data.sort((a, b) => new DataTransfer(a.date) - new Date(b.date));
+
     // set scale domain
     x.domain(d3.extent(data, (d) => new Date(d.date)));
     y.domain([0, d3.max(data, (d) => d.distance)]);
+
+    // update path data
+    path.data([data])
+        .attr("fill", "none")
+        .attr("stroke", "#00bfa5")
+        .attr("stroke-width", 2)
+        .attr("d", line);
 
     // create circles for objects
     const circles = graph.selectAll("circle").data(data);
