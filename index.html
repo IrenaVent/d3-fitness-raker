@@ -53,6 +53,23 @@
             </div>
         </dic>
 
+        <script src="https://www.gstatic.com/firebasejs/9.4.1/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.4.1/firebase-firestore-compat.js"></script>
+        <script>
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyBVqx-zEcf6VrheWE58ZYECK1A7263aneE",
+                authDomain: "udemy-d3-firebase-a3c9a.firebaseapp.com",
+                projectId: "udemy-d3-firebase-a3c9a",
+                storageBucket: "udemy-d3-firebase-a3c9a.appspot.com",
+                messagingSenderId: "707384054311",
+                appId: "1:707384054311:web:d317424694a03ebba0b402",
+                measurementId: "G-QZTR6BYPKS",
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            const db = firebase.firestore();
+        </script>
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="index.js"></script>
         <script src="graph.js"></script>
